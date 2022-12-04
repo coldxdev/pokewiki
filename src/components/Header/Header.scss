@@ -1,0 +1,12 @@
+@import "../../styles/mixins.scss";
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: rem(15) 0;
+    background-color: var(--yellow);
+
+    &:not(:last-child){
+        margin-bottom: em(40);
+    }
+}

@@ -1,0 +1,589 @@
+@import "./null";
+@import "./mixins";
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,500,700&display=swap);
+
+:root {
+    --yellow: #FFBF00;
+    --dark: #41414A;
+    --gray: #D9D9D9;
+    --peach: #F17A5F;
+    --blue: #30A7D7;
+    --orange: #FF7000;
+}
+
+
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Montserrat";
+    min-width: rem(320);
+    height: 100%;
+    font-size: rem(16);
+    line-height: 1.2;
+    overflow-x: hidden;
+    background-color: var(--dark);
+    color: #fff;
+}
+
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 rem(15);
+}
+
+
+.wrapper {
+    padding-bottom: rem(50);
+    position: relative;
+}
+
+
+.home {}
+
+.home__items{
+    position: relative;
+    min-height: rem(250);
+}
+
+.home__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: rem(40);
+    gap: rem(15);
+    position: relative;
+
+    @media (max-width: em(520)) {
+        flex-direction: column;
+    }
+
+
+    &-wrapper {
+        display: flex;
+        align-items: center;
+        gap: rem(15);
+
+    }
+
+    &-input {
+        font-size: rem(20);
+        color: #fff;
+        max-width: rem(350);
+        width: 100%;
+        padding: rem(15) rem(25);
+        background: transparent;
+        border: 1px solid var(--yellow);
+        min-height: 50px;
+        border-radius: rem(12);
+        transition: max-width ease .5s;
+
+        &.focused {
+            max-width: 100%;
+        }
+
+        &::placeholder {
+            color: var(--gray);
+        }
+
+        @media (max-width: em(520)) {
+            max-width: 100%;
+        }
+    }
+
+    &-btn {
+        border-radius: rem(12);
+        padding: rem(15) rem(30);
+        background-color: var(--yellow);
+        font-size: rem(20);
+        transition: opacity ease .3s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: em(520)) {
+            flex: 1 1 auto;
+        }
+    }
+
+    &-btn--reset {
+        background-color: var(--blue);
+    }
+}
+
+.home__types {
+
+    margin-bottom: rem(75);
+
+    &-title {
+        font-weight: 500;
+        font-size: rem(28);
+
+        margin-bottom: rem(20);
+    }
+}
+
+
+.cards-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: rem(35);
+
+    &:not(:last-child) {
+        margin-bottom: rem(50);
+    }
+
+
+    @media (max-width: em(1100)) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: rem(20);
+    }
+
+    @media (max-width: em(780)) {
+        grid-template-columns: repeat(2, 1fr);
+        // gap: rem(15);
+    }
+
+    @media (max-width: em(520)) {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.card {
+    --card-bg-color: #f17a5f;
+    padding: rem(40);
+    background-color: var(--card-bg-color);
+    border-radius: rem(25);
+    position: relative;
+    transition: box-shadow ease .3s;
+
+    @media (max-width: em(650)) {
+        padding: rem(40) rem(30);
+    }
+
+
+    &__index {
+        position: absolute;
+        top: rem(15);
+        left: rem(25);
+        font-weight: 500;
+        font-size: rem(18);
+    }
+
+    &__img {
+        padding-bottom: 100%;
+        height: 0;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: rem(25);
+
+        & img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__name {
+        font-size: rem(24);
+        text-align: center;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        box-shadow: 0 0 18px 0 var(--card-bg-color);
+        opacity: 0;
+        border-radius: rem(25);
+        transition: opacity ease .3s;
+    }
+
+
+    &:hover {
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &.normal {
+        --card-bg-color: #BDBDBD;
+    }
+
+    &.fighting {
+        --card-bg-color: #FF7000;
+    }
+
+    &.flying {
+        --card-bg-color: #6EACE2;
+    }
+
+    &.poison {
+        --card-bg-color: #C98DC7;
+    }
+
+    &.ground {
+        --card-bg-color: #D3B464;
+    }
+
+    &.rock {
+        --card-bg-color: #C29675;
+    }
+
+    &.bug {
+        --card-bg-color: #7AC572;
+    }
+
+    &.ghost {
+        --card-bg-color: #8784BD;
+    }
+
+    &.steel {
+        --card-bg-color: #A1A1A1;
+    }
+
+    &.fire {
+        --card-bg-color: var(--peach);
+    }
+
+    &.water {
+        --card-bg-color: #5FB5DD;
+    }
+
+    &.grass {
+        --card-bg-color: #A8C945;
+    }
+
+    &.electric {
+        --card-bg-color: #EECE4F;
+    }
+
+    &.psychic {
+        --card-bg-color: #EE96BA;
+    }
+
+    &.ice {
+        --card-bg-color: #5ECDE8;
+    }
+
+    &.dragon {
+        --card-bg-color: #7F94CC;
+    }
+
+    &.fairy {
+        --card-bg-color: #EA81C1;
+    }
+
+}
+
+
+
+.pokemon {
+
+    &__top {
+        margin-bottom: rem(25);
+    }
+
+    &__back {
+        display: flex;
+        align-items: center;
+        gap: rem(15);
+        font-size: rem(24);
+
+        svg {
+            width: rem(35);
+            height: rem(30);
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        gap: rem(50);
+        align-items: flex-start;
+
+        &:not(:last-child) {
+            margin-bottom: rem(25);
+        }
+
+        @media (max-width: em(979)) {
+            flex-direction: column;
+            align-items: stretch;
+            row-gap: rem(15);
+        }
+    }
+
+    &__img {
+        flex: 0 0 40%;
+
+        @media (max-width: em(979)) {
+            max-width: rem(450);
+            width: 100%;
+        }
+    }
+
+    &__img-wrapper {
+        padding-bottom: 100%;
+        height: 0;
+        position: relative;
+
+        img {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__content {
+        flex: 1 1 auto;
+    }
+
+    &__left {
+        flex: 0 1 40%;
+    }
+
+    &__types {
+        margin-bottom: rem(25);
+    }
+
+    &__types-title {
+        font-size: rem(24);
+        font-weight: 600;
+        margin-bottom: rem(15)
+    }
+}
+
+
+.pokemon-content {
+
+    &__name {
+        font-weight: 700;
+        font-size: rem(48);
+        margin-bottom: rem(15);
+        text-transform: capitalize;
+    }
+
+}
+
+.pokemon-info {
+    max-width: rem(450);
+    width: 100%;
+    padding: rem(40);
+    background-color: var(--blue);
+    box-shadow: 0 0 rem(15) 0 var(--blue);
+    border-radius: rem(15);
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(30) rem(15);
+
+    @media (max-width: em(979)) {
+        max-width: 100%;
+        padding: rem(25);
+    }
+
+    &:not(:last-child) {
+        margin-bottom: rem(25);
+    }
+
+    &__item {
+        flex: 0 0 calc(50% - 15px);
+    }
+
+    &__title {
+        font-size: rem(22);
+        font-weight: 700;
+
+        margin-bottom: rem(12);
+
+        @media (max-width: em(979)) {
+            font-size: rem(20);
+        }
+    }
+
+    &__value {
+        font-size: rem(18);
+        font-weight: 500;
+        color: #41414A;
+        text-transform: capitalize;
+
+        @media (max-width: em(979)) {
+            font-size: rem(16);
+        }
+    }
+}
+
+.pokemon-stats {
+    @media (max-width: em(979)) {
+        margin-bottom: rem(25);
+    }
+
+    &__title {
+        font-size: rem(24);
+        font-weight: 600;
+        margin-bottom: rem(15)
+    }
+
+    &__items {}
+
+    &__item {
+        display: grid;
+        grid-template-columns: 1fr auto 50%;
+        gap: rem(25);
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+
+
+        @media (max-width: em(979)) {
+            grid-template-columns: 1fr auto 45%;
+        }
+    }
+
+    &__item-name,
+    &__item-value {
+        font-size: rem(18);
+
+        @media (max-width: em(979)) {
+            font-size: rem(16);
+        }
+    }
+
+    &__item-name {
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    &__item-value {
+        font-weight: 700;
+    }
+
+    &__item-progress {
+        width: 100%;
+        height: rem(13);
+        border-radius: rem(10);
+        background-color: var(--gray);
+        position: relative;
+
+        span {
+            position: absolute;
+            background-color: var(--peach);
+            max-width: 0;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            z-index: 2;
+            border-radius: rem(10);
+            transition: max-width ease .3s
+        }
+
+        &.hp span {
+            background-color: #48B736;
+        }
+
+        &.attack span {
+            background-color: #E83030;
+        }
+
+        &.defense span {
+            background-color: #30ABE8;
+        }
+
+        &.speed span {
+            background-color: #F2A863;
+        }
+
+        &.special-attack span {
+            background-color: #7A0CA7;
+        }
+
+        &.special-defense span {
+            background-color: #EA81C1;
+        }
+    }
+}
+
+.pokemon-moves {
+    flex: 1 1 auto;
+
+    &__title {
+        font-size: rem(24);
+        font-weight: 600;
+        margin-bottom: rem(15)
+    }
+
+    &__table-container {
+        overflow-x: auto;
+        border-radius: 8px;
+        padding-bottom: 16px;
+    }
+
+    &__table {
+        width: 100%;
+        border: none;
+        border-collapse: collapse;
+        border-radius: 8px;
+        background-color: #f9f4ec;
+        overflow: hidden;
+    }
+
+    &__table-header {
+        background-color: #FFBF00;
+        border-collapse: collapse;
+
+        th {
+            padding: rem(15);
+        }
+    }
+
+    &__table-body {
+        background-color: #E3350D;
+
+        td {
+            text-align: center;
+            padding: rem(12.5);
+            white-space: nowrap;
+            text-transform: capitalize;
+        }
+
+        tr:last-child td {
+            padding-bottom: rem(25);
+        }
+    }
+
+}
+
+
+.error {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: calc(100% + 10px);
+    color: #E3350D;
+}
+
+
+.load-more {
+    padding: rem(15) rem(35);
+    background-color: var(--blue);
+    font-size: rem(24);
+    border-radius: rem(15);
+    display: block;
+    margin: 0 auto;
+}

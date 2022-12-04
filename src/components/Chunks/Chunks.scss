@@ -1,0 +1,100 @@
+@import "../../styles/mixins.scss";
+
+.chunks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(11);
+}
+
+
+.chunk {
+    --bg-color: var(--yellow);
+    font-size: rem(14);
+    font-weight: 500;
+    padding: rem(8) rem(25);
+    background-color: var(--bg-color);
+    border-radius: rem(20);
+    text-transform: capitalize;
+    border: 1px solid transparent;
+    box-shadow: 0 0 11px 0 transparent;
+    transition: opacity ease .3s, box-shadow ease .3s, border-color ease .3s, background-color ease .3s, color ease .3s;
+
+    &:hover {
+        box-shadow: 0 0 11px 0 var(--bg-color);
+    }
+
+    &.normal {
+        --bg-color: #BDBDBD;
+    }
+
+    &.fighting {
+        --bg-color: var(--orange);
+    }
+
+    &.flying {
+        --bg-color: #6EACE2;
+    }
+
+    &.poison {
+        --bg-color: #C98DC7;
+    }
+
+    &.ground {
+        --bg-color: #D3B464;
+    }
+
+    &.rock {
+        --bg-color: #C29675;
+    }
+
+    &.bug {
+        --bg-color: #7AC572;
+    }
+
+    &.ghost {
+        --bg-color: #8784BD;
+    }
+
+    &.steel {
+        --bg-color: #A1A1A1;
+    }
+
+    &.fire {
+        --bg-color: var(--peach);
+    }
+
+    &.water {
+        --bg-color: #5FB5DD;
+    }
+
+    &.grass {
+        --bg-color: #A8C945;
+    }
+
+    &.electric {
+        --bg-color: #EECE4F;
+    }
+
+    &.psychic {
+        --bg-color: #EE96BA;
+    }
+
+    &.ice {
+        --bg-color: #5ECDE8;
+    }
+
+    &.dragon {
+        --bg-color: #7F94CC;
+    }
+
+    &.fairy {
+        --bg-color: #EA81C1;
+    }
+
+    &.active {
+        color: var(--bg-color);
+        border-color: var(--bg-color);
+        background-color: #fff;
+    }
+
+}
