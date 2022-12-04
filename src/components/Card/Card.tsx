@@ -3,6 +3,7 @@ import { IPokemonCard, PokemonTypeName } from "../../types/pokemon";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import cover from "../../assets/images/card-img-cover.svg";
+import { formatName } from '../../utils/functions';
 
 const Card: React.FC<IPokemonCard> = ({ name, id, types, img}) => {
   const typeName = types[0]?.name;
@@ -39,7 +40,7 @@ const Card: React.FC<IPokemonCard> = ({ name, id, types, img}) => {
         />
       </div>
 
-      <div className="card__name">{name}</div>
+      <div className="card__name">{formatName(name)}</div>
     </Link>
   );
 };

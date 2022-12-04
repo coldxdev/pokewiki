@@ -4,6 +4,8 @@ import { AppRoutes } from "../../routes";
 import { IPokemon } from "../../types/pokemon";
 import Chunk from "../Chunks/Chunk/Chunk";
 import Chunks from "../Chunks/Chunks";
+import cover from "../../assets/images/card-img-cover.svg";
+import { formatName } from "../../utils/functions";
 
 const PokemonDetail: React.FC<IPokemon> = ({
   experience,
@@ -17,7 +19,6 @@ const PokemonDetail: React.FC<IPokemon> = ({
   abilities,
 }) => {
   const ability = abilities.find((item) => !item.isHidden);
-  const formatName = (name: string) => name.replace("-", " ");
 
   const pokemonStatsItems = stats.map((stat) => {
     return (
@@ -75,11 +76,11 @@ const PokemonDetail: React.FC<IPokemon> = ({
         <div className="pokemon__wrapper">
           <div className="pokemon__img">
             <div className="pokemon__img-wrapper">
-              <img src={img} alt={`Pokemon ${name} image`} />
+              <img src={img ? img : cover} alt={`Pokemon ${name} image`} />
             </div>
           </div>
           <div className="pokemon__content pokemon-content">
-            <h1 className="pokemon-content__name">{name}</h1>
+            <h1 className="pokemon-content__name">{formatName(name)}</h1>
             <div className="pokemon__types">
               <Chunks types={types} />
             </div>
@@ -93,39 +94,41 @@ const PokemonDetail: React.FC<IPokemon> = ({
           <div className="pokemon-info">
             <div className="pokemon-info__item">
               <h5 className="pokemon-info__title">Height</h5>
-              <div className="pokemon-info__value">{height}&apos;</div>
+              <div className="pokemon-info__value">{height || '-'}&apos;</div>
             </div>
             <div className="pokemon-info__item">
               <h5 className="pokemon-info__title">Experience</h5>
-              <div className="pokemon-info__value">{experience}</div>
+              <div className="pokemon-info__value">{experience || '-'}</div>
             </div>
             <div className="pokemon-info__item">
               <h5 className="pokemon-info__title">Weight</h5>
-              <div className="pokemon-info__value">{weight} lbs</div>
+              <div className="pokemon-info__value">{weight || '-'} lbs</div>
             </div>
             <div className="pokemon-info__item">
               <h5 className="pokemon-info__title">Ability</h5>
-              <div className="pokemon-info__value">{ability.name}</div>
+              <div className="pokemon-info__value">{ability.name || '-'}</div>
             </div>
           </div>
-          <div className="pokemon__moves pokemon-moves">
-            <h4 className="pokemon-moves__title">Moves</h4>
-            <div className="pokemon-moves__table-container">
-              <table className="pokemon-moves__table">
-                <thead className="pokemon-moves__table-header">
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Power</th>
-                    <th>PP</th>
-                  </tr>
-                </thead>
-                <tbody className="pokemon-moves__table-body">
-                  {pokemonMovesItems}
-                </tbody>
-              </table>
+          {moves.length > 0 && (
+            <div className="pokemon__moves pokemon-moves">
+              <h4 className="pokemon-moves__title">Moves</h4>
+              <div className="pokemon-moves__table-container">
+                <table className="pokemon-moves__table">
+                  <thead className="pokemon-moves__table-header">
+                    <tr>
+                      <th>Type</th>
+                      <th>Name</th>
+                      <th>Power</th>
+                      <th>PP</th>
+                    </tr>
+                  </thead>
+                  <tbody className="pokemon-moves__table-body">
+                    {pokemonMovesItems}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

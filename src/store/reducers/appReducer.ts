@@ -2,7 +2,7 @@ import { ITEMS_PER_PAGE } from "../../utils/consts";
 import { AppState, AppActionTypes, AppAction } from "./../../types/app";
 
 const initialState: AppState = {
-  isLoading: true,
+  isLoading: false,
   pokemons: [],
   itemsLimit: ITEMS_PER_PAGE,
   currentPage: 1,
