@@ -9,11 +9,11 @@ interface LoaderProps {
 const Loader: React.FC<LoaderProps> = ({ isLoading }) => {
   return (
     <div
-      className={cn("loader", {
+      className={cn("app-loader", {
         active: isLoading,
       })}
     >
-      <span className="loader__item"></span>
+      <span className="app-loader__item"></span>
     </div>
   );
 };

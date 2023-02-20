@@ -1,4 +1,4 @@
-.loader {
+.app-loader {
   position: absolute;
   top: 0;
   left: 0;
@@ -15,20 +15,20 @@
   visibility: hidden;
 }
 
-.loader.active {
+.app-loader.active {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
 
-.loader__item {
+.app-loader__item {
   animation: rotate 1s infinite;
   height: 50px;
   width: 50px;
 }
 
-.loader__item:before,
-.loader__item:after {
+.app-loader__item:before,
+.app-loader__item:after {
   border-radius: 50%;
   content: "";
   display: block;
@@ -36,14 +36,14 @@
   width: 20px;
 }
 
-.loader__item:before {
+.app-loader__item:before {
   animation: ball1 1s infinite;
   background-color: #fff;
   box-shadow: 30px 0 0 #ff3d00;
   margin-bottom: 10px;
 }
 
-.loader__item:after {
+.app-loader__item:after {
   animation: ball2 1s infinite;
   background-color: #ff3d00;
   box-shadow: 30px 0 0 #fff;
